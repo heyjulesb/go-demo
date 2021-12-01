@@ -1,0 +1,4 @@
+Declaring variables
+use the syntax varName := value
+
+t.Errorf
