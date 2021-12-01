@@ -19,9 +19,14 @@ import "fmt"
 // 	fmt.Println(Hello())
 // }
 
+const englishHelloPrefix = "Hello, "
+
 // the function accepts any argument of type string
 func Hello(name string) string {
-	return "Hello, " + name // using the name argument and concatenating it with Hello,
+	if name == "" {
+			name = "World"
+	}
+	return englishHelloPrefix + name // using the name argument and concatenating it with Hello,
 }
 
 func main() {

@@ -25,10 +25,37 @@ import "testing"
 // 		}
 // }
 
+// func TestHello(t *testing.T) {
+// 	got := Hello("Chris")
+// 	want := "Hello, Chris"
+// 		if got != want {
+// 			t.Errorf("got %q want %q", got, want)
+// 		}
+// }
+
+// refactored our assertion from the original code into a function. Reduces duplication and improves readability of our tests.
+// In Go, you can delcare functions inside other functions and assign them to variables. You can call them like normal functions.
+// For Helper functions, good idea to use testing.TB which is an interface that *testing.T and *testing B both satisfy, so you can call helper functions from a test or a benchmark.
+// t.Helper() is needed to test the test suite that this method is a helper. When a test fails the line number reported will be in our function call rather than inside our test helper.
 func TestHello(t *testing.T) {
-	got := Hello("Chris")
-	want := "Hello, Chris"
+	assertCorrectMessage := func(t testing.TB, got, want string){
+		t.Helper()
 		if got != want {
 			t.Errorf("got %q want %q", got, want)
 		}
+	}
+
+	t.Run("saying hello to people", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello, Chris"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T){
+		got := Hello("")
+		want := "Hello, World"
+		assertCorrectMessage(t, got, want)
+	})
 }
+
+
