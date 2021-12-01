@@ -12,7 +12,7 @@ import "fmt"
 
 // new function but added a keyword string in the definition. This means the function returns a string.
 func Hello() string {
-	return "Hello, World"
+	return "Hello, world"
 }
 
 func main() {
