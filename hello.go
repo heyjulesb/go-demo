@@ -11,10 +11,19 @@ import "fmt"
 // }
 
 // new function but added a keyword string in the definition. This means the function returns a string.
-func Hello() string {
-	return "Hello, world"
+// func Hello() string {
+// 	return "Hello, world"
+// }
+
+// func main() {
+// 	fmt.Println(Hello())
+// }
+
+// the function accepts any argument of type string
+func Hello(name string) string {
+	return "Hello, " + name // using the name argument and concatenating it with Hello,
 }
 
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("world"))
 }
