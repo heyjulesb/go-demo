@@ -30,16 +30,24 @@ func Hello(name string, language string) string {
 	if name == "" {
 			name = "World"
 	}
-
-	if language == spanish {
-		return spanishHelloPrefix + name
+	
+	return greetingPrefix(language) + name
+}
+// named return value (prefix string). This will create a varaible called prefix in your function.
+// It will be assigned the "zero" value. This depends on the type, e.g. int are 0 and for string it is ""
+// You can return whatever value is set by calling return rather than return prefix.
+// the function name starts with a lowercase letter. In Go public functions start with a captial letter and private functions start with a lowecase.
+func greetingPrefix(language string) (prefix string) {
+	switch language {
+	case french:
+		prefix = frenchHelloPrefix
+	case spanish:
+		prefix = spanishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
 	}
 
-	if language == french {
-		return frenchHelloPrefix + name
-	}
-
-	return englishHelloPrefix + name // using the name argument and concatenating it with Hello,
+	return
 }
 
 func main() {
